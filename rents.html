@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        RENT A CAR</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="vehicle.html">Vehicle</a></li>
+                    <li><a href="customers.html">Customers</a></li>
+                    <li><a href="rents.html">Rents</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+    <div class="container">
+        <h2>Specify the period</h2>
+        <p>You have to input start trip day and end trip day to calculate discount</p>
+        <form class="form-horizontal" action="">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Full name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" placeholder="Enter full name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="vehicle">Vehicle:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="vehicle" placeholder="vehicle">
+                </div>
+            </div>
+            <h3>
+                Input trip start and trip end date:
+            </h3>
+            <label for="start">Start date:</label>
+            <input type="date" id="start" name="trip-start" value="2018-07-22" min="2021-01-01" max="2088-12-31">
+
+            <label for="end">End date:</label>
+            <input type="date" id="end" name="trip-end" value="2018-07-22" min="2021-01-01" max="2088-12-31">
+
+            <button type="submit" class="btn btn-default">Rent</button>
+        </form>
+    </div>
