@@ -35,13 +35,42 @@ function getById(key, id) {
 }
 
 function saveAll(key) {
-    saveKey(CUSTOMER, getAll(key));
+    saveKey(key, getAll(key));
 }
 
 function addNewObj(key, obj) {
     obj[ID] = getId();
     getAll(key).push(obj);
     saveAll(key)
+}
+
+function updateObj(key, obj) {
+    var objects = getAll(key);
+    for (let i = 0; i < objects.length; i++) {
+        const c = objects[i];
+        if (c[ID] == obj[ID]) {
+            objects[i] = obj;
+            break;
+        }        
+    }
+    saveAll(key);
+}
+
+function deleteObj(key, id) {
+    var objects = getAll(key);
+    for (let i = 0; i < objects.length; i++) {
+        const o = objects[i];
+        if (o[ID] == id) {
+            objects.splice(i, 1);
+            break;
+        }
+        
+    }
+    saveAll(key);
+}
+
+function loadAll(key) {
+    db[key] = readKey(key);
 }
 
 
@@ -60,37 +89,30 @@ function saveCustomers() {
 }
 
 function addNewCustomer(customer) {
-    addNewObj(CUSTOMER, obj)
+    addNewObj(CUSTOMER, customer);
 }
 
 function updateCustomer(customer) {
-    var customers = getCustomers();
-    for (let i = 0; i < customers.length; i++) {
-        const c = customers[i];
-        if (c[ID] == customer[ID]) {
-            customers[i] = customer;
-            break;
-        }        
-    }
-    saveCustomers();
+    updateObj(CUSTOMER, customer);
 }
 
 function deleteCustomer(id) {
-    var customers = getCustomers();
-    for (let i = 0; i < customers.length; i++) {
-        const c = customers[i];
-        if (c[ID] == id) {
-            customers.splice(i, 1);
-            break;
-        }
-        
-    }
-    saveCustomers();
+    deleteObj(CUSTOMER, id)
 }
 
 function loadCustomers() {
-    db[CUSTOMER] = readKey(CUSTOMER);
+    loadAll(CUSTOMER);
 }
+
+/* CRUD FOR VEHICLE */
+
+//TODO
+
+/* CRUD FOR RENTS */
+
+//TODO
+
+/* Business Logic */
 
 function loadDB() {
     loadCustomers();
