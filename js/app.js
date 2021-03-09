@@ -25,7 +25,7 @@ function getAll(key) {
 }
 
 function getById(key, id) {
-    for (var obj in getAll(key)) {
+    for (var obj of getAll(key)) {
         if (obj[ID] == id) {
             return obj;
         }
@@ -81,7 +81,7 @@ function getCustomers() {
 }
 
 function getCustomer(id) {
-    getById(CUSTOMER, id);
+    return getById(CUSTOMER, id);
 }
 
 function saveCustomers() {
@@ -120,20 +120,24 @@ function loadDB() {
 
 loadDB();
 
-var $addCustomerForm = $('form#add-customer');
-$addCustomerForm.on('submit', function(e) {
-    e.preventDefault();
+function bindCustomerAddFormSubmission() {
+    var $form = $('form#add-customer');
+    $form.on('submit', function(e) {
+        e.preventDefault();
 
-    var customer = {};
-    customer.name = $addCustomerForm.find('input#name').val();
-    customer.email = $addCustomerForm.find('input#email').val();
-    customer.phone = $addCustomerForm.find('input#phone').val();
+        var customer = {};
+        customer.name = $form.find('input#name').val();
+        customer.email = $form.find('input#email').val();
+        customer.phone = $form.find('input#phone').val();
 
-    if (customer.name && customer.email && customer.phone) {
-        addNewCustomer(customer);
-        refresh();  
-    }
-})
+        if (customer.name && customer.email && customer.phone) {
+            addNewCustomer(customer);
+            refresh();  
+        }
+    })
+}
+
+bindCustomerAddFormSubmission();
 
 function getCustomersHtml() {
     var html = '';
@@ -171,7 +175,7 @@ function showCustomers() {
     $('table#customers tbody').html(html);
 }
 
-function bindDeleteButtons() {
+function bindCustomerDeleteButtons() {
     $('button.delete-customer').on('click', function(e){
         $this = $(this);
         var id = $this.closest('tr').data('id');
@@ -180,9 +184,57 @@ function bindDeleteButtons() {
     });
 }
 
+function bindCustomerUpdateButtons() {
+    $('button.update-customer').on('click', function(e){
+        $this = $(this);
+        var id = $this.closest('tr').data('id');
+        var customer = getCustomer(id);
+        var $form = $('form#update-customer');
+        $form.find('input#id').val(customer.id);
+        $form.find('input#name').val(customer.name);
+        $form.find('input#email').val(customer.email);
+        $form.find('input#phone').val(customer.phone);
+        $form.show();
+
+        // scroll to the form
+        $('body, html').animate(
+            {
+              scrollTop: $('form#update-customer').offset().top
+            },
+            800 //speed
+        );
+        bindCustomerUpdateFormSubmission();
+    });
+}
+
+function hideCustomerUpdateForm() {
+    var $form = $('form#update-customer');
+    $form.hide();
+}
+
+function bindCustomerUpdateFormSubmission() {
+    var $form = $('form#update-customer');
+    $form.on('submit', function(e) {
+        e.preventDefault();
+
+        var customer = {};
+        customer.id = $form.find('input#id').val();
+        customer.name = $form.find('input#name').val();
+        customer.email = $form.find('input#email').val();
+        customer.phone = $form.find('input#phone').val();
+
+        if (customer.id && customer.name && customer.email && customer.phone) {
+            updateCustomer(customer);
+            refresh();  
+        }
+    })
+}
+
 function refresh() {
     showCustomers();
-    bindDeleteButtons(); 
+    bindCustomerDeleteButtons();
+    bindCustomerUpdateButtons();
+    hideCustomerUpdateForm();
 }
 
 refresh();
