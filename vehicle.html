@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -7,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/site.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -18,79 +20,78 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">RENT A CAR</a>
-
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="vehicle.html">Vehicle</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="vehicle.html">Vehicle</a></li>
                     <li><a href="customers.html">Customers</a></li>
                     <li><a href="rents.html">Rents</a></li>
                 </ul>
             </div>
         </nav>
-
     </header>
-    <div class="container">
-        <h2>Table</h2>
-        <p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under
-            768px). When viewing on anything larger than 768px wide, there is no difference:</p>
-            <form class="form-horizontal" action="">
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="brand">Brand:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="brand" placeholder="Enter brand">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="model">Model:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="model" placeholder="Enter model">
-                    </div>
-                </div>
-    
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="year">Construction year:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="year" placeholder="Construction year">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="fuel">Fuel type:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="fuel" placeholder="Enter fuel type">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="seats">Number of seats:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="seats" placeholder="Number of seats">
-                    </div>
-                </div>
-    
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="image">Image:</label>
-                    <div class="col-sm-10">
-                        <input type="image" src="images/car.jpg" alt="" width="25" height="25"  id="image" placeholder="image">
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="price">Price per day:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="price" placeholder="price per dey">
-                    </div>
+    <div class="container">
+        <h2>Vehicles Table</h2>
+        <p>On this page you can add new vehicles:</p>
+        <form class="form-horizontal" action="" id="add-vehicle">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="brand">Brand:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="brand" placeholder="Enter brand">
                 </div>
-    
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Add</button>
-                    </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="model">Model:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="model" placeholder="Enter model">
                 </div>
-            </form>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="year">Construction year:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="year" placeholder="Construction year">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="fuel">Fuel type:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="fuel" placeholder="Enter fuel type">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="seats">Number of seats:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="seats" placeholder="Number of seats">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="image">Image:</label>
+                <div class="col-sm-10">
+                    <input type="image" src="images/car.jpg" alt="" width="25" height="25" id="image"
+                        placeholder="image">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="price">Price per day:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="price" placeholder="Price per dey">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Add</button>
+                </div>
+            </div>
+        </form>
         <br>
-     
+
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="vehicles">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -102,131 +103,74 @@
                         <th>Picture</th>
                         <th>Price per day</th>
                         <th>Available vehicles</th>
-                        <th>Button</th>
-
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Ford</td>
-                        <td>Fiesta</td>
-                        <td>1995</td>
-                        <td>disel</td>
-                        <td>5</td>
-                        <td><img src="images/car.jpg" width="25" height="25" alt=""></td>
-                        <td>25$</td>
-                        <td>5</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">Update</button>
-                                <button type="button" class="btn btn-default">Del</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Ford</td>
-                        <td>Fiesta</td>
-                        <td>1995</td>
-                        <td>disel</td>
-                        <td>5</td>
-                        <td><img src="images/car.jpg" width="25" height="25" alt=""></td>
-                        <td>25$</td>
-                        <td>5</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">Update</button>
-                                <button type="button" class="btn btn-default">Del</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Ford</td>
-                        <td>Fiesta</td>
-                        <td>1995</td>
-                        <td>disel</td>
-                        <td>5</td>
-                        <td><img src="images/car.jpg" width="25" height="25" alt=""></td>
-                        <td>25$</td>
-                        <td>5</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">Update</button>
-                                <button type="button" class="btn btn-default">Del</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Ford</td>
-                        <td>Fiesta</td>
-                        <td>1995</td>
-                        <td>disel</td>
-                        <td>5</td>
-                        <td><img src="images/car.jpg" width="25" height="25" alt=""></td>
-                        <td>25$</td>
-                        <td>5</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">Update</button>
-                                <button type="button" class="btn btn-default">Del</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Ford</td>
-                        <td>Fiesta</td>
-                        <td>1995</td>
-                        <td>disel</td>
-                        <td>5</td>
-                        <td><img src="images/car.jpg" width="25" height="25" alt=""></td>
-                        <td>25$</td>
-                        <td>5</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">Update</button>
-                                <button type="button" class="btn btn-default">Del</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Ford</td>
-                        <td>Fiesta</td>
-                        <td>1995</td>
-                        <td>disel</td>
-                        <td>5</td>
-                        <td><img src="images/car.jpg" width="25" height="25" alt=""></td>
-                        <td>25$</td>
-                        <td>5</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">Update</button>
-                                <button type="button" class="btn btn-default">Del</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Ford</td>
-                        <td>Fiesta</td>
-                        <td>1995</td>
-                        <td>disel</td>
-                        <td>5</td>
-                        <td><img src="images/car.jpg" width="25" height="25" alt=""></td>
-                        <td>25$</td>
-                        <td>5</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">Update</button>
-                                <button type="button" class="btn btn-default">Del</button>
-                            </div>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>
+
+        <form class="form-horizontal" action="" id="update-vehicle">
+            <h2>Update Vehicles</h2>
+            <input type="hidden" id="id">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="brand">Brand:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="brand" placeholder="Enter brand">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="model">Model:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="model" placeholder="Enter model">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="year">Construction year:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="year" placeholder="Construction year">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="fuel">Fuel type:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="fuel" placeholder="Enter fuel type">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="seats">Number of seats:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="seats" placeholder="Number of seats">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="image">Image:</label>
+                <div class="col-sm-10">
+                    <input type="image" src="images/car.jpg" alt="" width="25" height="25" id="image"
+                        placeholder="image">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="price">Price per day:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="price" placeholder="Price per dey">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Update</button>
+                </div>
+            </div>
+        </form>
+
     </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
