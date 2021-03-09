@@ -70,7 +70,7 @@ function deleteObj(key, id) {
 }
 
 function loadAll(key) {
-    db[key] = readKey(key);
+    db[key] = readKey(key) || [];
 }
 
 
@@ -117,3 +117,74 @@ function loadCustomers() {
 function loadDB() {
     loadCustomers();
 }
+
+loadDB();
+
+var $addCustomerForm = $('form#add-customer');
+$addCustomerForm.on('submit', function(e) {
+    e.preventDefault();
+
+    var customer = {};
+    customer.name = $addCustomerForm.find('input#name').val();
+    customer.email = $addCustomerForm.find('input#email').val();
+    customer.phone = $addCustomerForm.find('input#phone').val();
+
+    if (customer.name && customer.email && customer.phone) {
+        addNewCustomer(customer);
+        refresh();  
+    }
+})
+
+function getCustomersHtml() {
+    var html = '';
+
+    var index = 0;
+
+    for (var customer of getCustomers()) {
+        index = index + 1;
+        html = html + getCustomerHtml(customer, index);
+    }
+
+    return html;
+}
+
+function getCustomerHtml(customer, index) {
+    var html = `
+        <tr data-id="${customer.id}">
+            <td>${index}</td>
+            <td>${customer.name}</td>
+            <td>${customer.email}</td>
+            <td>${customer.phone}</td>
+            <td>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default update-customer">Update</button>
+                    <button type="button" class="btn btn-default delete-customer">Delete</button>
+                </div>
+            </td>
+        </tr>
+    `;
+    return html;
+}
+
+function showCustomers() {
+    var html = getCustomersHtml();
+    $('table#customers tbody').html(html);
+}
+
+function bindDeleteButtons() {
+    $('button.delete-customer').on('click', function(e){
+        $this = $(this);
+        var id = $this.closest('tr').data('id');
+        deleteCustomer(id);
+        refresh();
+    });
+}
+
+function refresh() {
+    showCustomers();
+    bindDeleteButtons(); 
+}
+
+refresh();
+
+

@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/site.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -34,7 +36,7 @@
         <h2>Table</h2>
         <p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under
             768px). When viewing on anything larger than 768px wide, there is no difference:</p>
-        <form class="form-horizontal" action="">
+        <form class="form-horizontal" action="" id="add-customer">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Full name:</label>
                 <div class="col-sm-10">
@@ -51,7 +53,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="phone">Phone number:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="phon" placeholder="phone number">
+                    <input type="text" class="form-control" id="phone" placeholder="phone number">
                 </div>
             </div>
 
@@ -64,7 +66,7 @@
         <br>
         <br>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="customers">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -75,67 +77,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Brat Pitt</td>
-                        <td>brat_pitt@yahoo.com</td>
-                        <td>+359/884 582 569</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">Update</button>
-                                <button type="button" class="btn btn-default">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Brat Pitt</td>
-                        <td>brat_pitt@yahoo.com</td>
-                        <td>+359/884 582 569</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">Update</button>
-                                <button type="button" class="btn btn-default">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Brat Pitt</td>
-                        <td>brat_pitt@yahoo.com</td>
-                        <td>+359/884 582 569</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">Update</button>
-                                <button type="button" class="btn btn-default">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Brat Pitt</td>
-                        <td>brat_pitt@yahoo.com</td>
-                        <td>+359/884 582 569</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">Update</button>
-                                <button type="button" class="btn btn-default">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Brat Pitt</td>
-                        <td>brat_pitt@yahoo.com</td>
-                        <td>+359/884 582 569</td>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default">Update</button>
-                                <button type="button" class="btn btn-default">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
