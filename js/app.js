@@ -442,6 +442,21 @@ function insertAvailabeVechiclesOptionsHtml() {
 
 insertAvailabeVechiclesOptionsHtml();
 
+function getCustomerOptionsHtml() {
+    var html = '';
+    for (var customer of getCustomers()) {
+        html = html + `<option value="${customer.id}">${customer.name} ${customer.email} ${customer.phone}</option>`;
+    }
+    return html;
+}
+
+function insertCustomerOptionsHtml() {
+    var html = getCustomerOptionsHtml();
+    $('form#add-rent select#customer').html(html);
+}
+
+insertCustomerOptionsHtml();
+
 const MILLIS_IN_DAY = 24 * 3600 * 1000;
 function getRentCost(rent) {
     var start = Date.parse(rent.start);
@@ -494,6 +509,31 @@ function isWithin60days(start) {
     }
     return false;
 }
+
+function insertRentCost() {
+    var rent = {};
+
+    var $form = $('form#add-rent');    
+    rent.customer = $form.find('#customer').val();
+    rent.vehicle = $form.find('#vehicle').val();
+    rent.start = $form.find('#start').val();
+    rent.end = $form.find('#end').val();
+
+    var cost = 0;
+    if (rent.start < rent.end) {
+        var cost = getRentCost(rent);        
+    }
+    $('form#add-rent #price').val(cost);
+}
+
+function bindStartEndOnChange() {
+    $('form#add-rent #start, form#add-rent #end').on('change', function() {
+        insertRentCost();
+    })
+}
+
+bindStartEndOnChange();
+
 
 /* ---------------------- */
 
