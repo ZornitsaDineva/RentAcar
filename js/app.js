@@ -299,9 +299,10 @@ function bindVehicleAddFormSubmission() {
         vehicle.fuel = $form.find('input#fuel').val();
         vehicle.seats = $form.find('input#seats').val();
         vehicle.price = $form.find('input#price').val();
+        vehicle.available = $form.find('input#available').val();
 
         if (vehicle.brand && vehicle.model && vehicle.year 
-            && vehicle.fuel && vehicle.seats && vehicle.price) {
+            && vehicle.fuel && vehicle.seats) {
             addNewVehicle(vehicle);
             refresh();  
         }
@@ -333,7 +334,7 @@ function getVehicleHtml(vehicle, index) {
             <td>${vehicle.seats}</td>
             <td><img src="images/car.jpg" width="25" height="25"></td>
             <td>${vehicle.price}</td>
-            <td></td>
+            <td>${vehicle.available}</td>
             <td>
                 <div class="btn-group">
                     <button type="button" class="btn btn-default update-vehicle">Update</button>
@@ -372,6 +373,7 @@ function bindVehicleUpdateButtons() {
         $form.find('input#fuel').val(vehicle.fuel);
         $form.find('input#seats').val(vehicle.seats);
         $form.find('input#price').val(vehicle.price);
+        $form.find('input#available').val(vehicle.available);
         $form.show();
 
         // scroll to the form
@@ -403,9 +405,10 @@ function bindVehicleUpdateFormSubmission() {
         vehicle.fuel = $form.find('input#fuel').val();
         vehicle.seats = $form.find('input#seats').val();
         vehicle.price = $form.find('input#price').val();
+        vehicle.available = $form.find('input#available').val();
 
         if (vehicle.brand && vehicle.model && vehicle.year 
-            && vehicle.fuel && vehicle.seats && vehicle.price) {
+            && vehicle.fuel && vehicle.seats) {
             updateVehicle(vehicle);
             refresh();  
         }
