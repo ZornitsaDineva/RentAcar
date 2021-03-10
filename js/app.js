@@ -419,9 +419,83 @@ function bindVehicleUpdateFormSubmission() {
     })
 }
 
-function selectFuelOption(vehicle) {
+/* Business Logic RENT */
 
+function getAvailabeVechicles(vehile) {
+    var vehicles = getVehicles();
+    vehicles.filter(vehicle => vehicle.available > 0);
+    return vehicles;
 }
+
+function getAvailabeVechiclesOptionsHtml() {
+    var html = '';
+    for (var vehicle of getAvailabeVechicles()) {
+        html = html + `<option value="${vehicle.id}">${vehicle.type} ${vehicle.brand} ${vehicle.model} ${vehicle.year} ${vehicle.fuel} ${vehicle.price}</option>`;
+    }
+    return html;
+}
+
+function insertAvailabeVechiclesOptionsHtml() {
+    var html = getAvailabeVechiclesOptionsHtml();
+    $('form#add-rent select#vehicle').html(html);
+}
+
+insertAvailabeVechiclesOptionsHtml();
+
+const MILLIS_IN_DAY = 24 * 3600 * 1000;
+function getRentCost(rent) {
+    var start = Date.parse(rent.start);
+    var end = Date.parse(rent.end);
+    var days = (end - start) / MILLIS_IN_DAY;
+    var vehicle = getVehicle(rent.vehicle);
+    var customer = getVehicle(rent.customer);
+    var cost = days * vehicle.price;
+
+    var discount_rate = 0;
+    if (days > 3) {
+        discount_rate = 5;
+    } else if (days > 5) {
+        discount_rate = 7;
+    } else if (days > 10) {
+        discount_rate = 10;
+    }
+    
+    if (isVip(customer)) {
+        discount_rate = discount_rate + 15;
+    }
+
+    cost = cost * (1 - discount_rate / 100.0);    
+    return cost;
+}
+
+function isVip(customer) {
+    var rents = getRents();
+    var customer_rents = 0;
+    for (var rent of rents) {
+        if (rent.id == customer.id && isWithin60days(rent.start)) {
+            customer_rents = customer_rents + 1;
+        }
+    }
+
+    if (customer_rents > 3) {
+        return true;
+    }
+
+    return false;
+}
+
+function isWithin60days(start) {
+    var start = Date.parse(start);
+    var end = Date.now();
+    var days = (end - start) / MILLIS_IN_DAY;
+
+    if (days <= 60) {
+        return true;
+    }
+    return false;
+}
+
+/* ---------------------- */
 
 function refresh() {
     showCustomers();

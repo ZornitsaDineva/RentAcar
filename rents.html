@@ -34,7 +34,7 @@
     <div class="container">
         <h2>Specify the period</h2>
         <p>You have to input start trip day and end trip day to calculate discount</p>
-        <form class="form-horizontal" action="">
+        <form class="form-horizontal" action="" id="add-rent">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Full name:</label>
                 <div class="col-sm-10">
@@ -44,18 +44,25 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="vehicle">Vehicle:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="vehicle" placeholder="vehicle">
+                    <select class="form-control" id="vehicle">
+                    </select>
                 </div>
             </div>
             <h3>
                 Input trip start and trip end date:
             </h3>
             <label for="start">Start date:</label>
-            <input type="date" id="start" name="trip-start" value="2018-07-22" min="2021-01-01" max="2088-12-31">
+            <input type="datetime-local" id="start" name="trip-start" value="2021-01-01" min="2021-01-01"
+                max="2088-12-31">
 
             <label for="end">End date:</label>
-            <input type="date" id="end" name="trip-end" value="2018-07-22" min="2021-01-01" max="2088-12-31">
+            <input type="datetime-local" id="end" name="trip-end" value="2021-01-01" min="2021-01-01" max="2088-12-31">
 
             <button type="submit" class="btn btn-default">Rent</button>
         </form>
     </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
