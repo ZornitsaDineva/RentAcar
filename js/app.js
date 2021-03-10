@@ -293,10 +293,11 @@ function bindVehicleAddFormSubmission() {
         e.preventDefault();
 
         var vehicle = {};
+        vehicle.type = $form.find('select#type').val();
         vehicle.brand = $form.find('input#brand').val();
         vehicle.model = $form.find('input#model').val();
         vehicle.year = $form.find('input#year').val();
-        vehicle.fuel = $form.find('input#fuel').val();
+        vehicle.fuel = $form.find('select#fuel').val();
         vehicle.seats = $form.find('input#seats').val();
         vehicle.price = $form.find('input#price').val();
         vehicle.available = $form.find('input#available').val();
@@ -327,6 +328,7 @@ function getVehicleHtml(vehicle, index) {
     var html = `
         <tr data-id="${vehicle.id}">
             <td>${index}</td>
+            <td>${vehicle.type}</td>
             <td>${vehicle.brand}</td>
             <td>${vehicle.model}</td>
             <td>${vehicle.year}</td>
@@ -367,10 +369,11 @@ function bindVehicleUpdateButtons() {
         var vehicle = getVehicle(id);
         var $form = $('form#update-vehicle');
         $form.find('input#id').val(vehicle.id);
+        $form.find('select#type').val(vehicle.type);
         $form.find('input#brand').val(vehicle.brand);
         $form.find('input#model').val(vehicle.model);
         $form.find('input#year').val(vehicle.year);
-        $form.find('input#fuel').val(vehicle.fuel);
+        $form.find('select#fuel').val(vehicle.fuel);
         $form.find('input#seats').val(vehicle.seats);
         $form.find('input#price').val(vehicle.price);
         $form.find('input#available').val(vehicle.available);
@@ -399,10 +402,11 @@ function bindVehicleUpdateFormSubmission() {
 
         var vehicle = {};
         vehicle.id = $form.find('input#id').val();
+        vehicle.type = $form.find('select#type').val();
         vehicle.brand = $form.find('input#brand').val();
         vehicle.model = $form.find('input#model').val();
         vehicle.year = $form.find('input#year').val();
-        vehicle.fuel = $form.find('input#fuel').val();
+        vehicle.fuel = $form.find('select#fuel').val();
         vehicle.seats = $form.find('input#seats').val();
         vehicle.price = $form.find('input#price').val();
         vehicle.available = $form.find('input#available').val();
@@ -413,6 +417,10 @@ function bindVehicleUpdateFormSubmission() {
             refresh();  
         }
     })
+}
+
+function selectFuelOption(vehicle) {
+
 }
 
 function refresh() {
